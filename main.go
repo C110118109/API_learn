@@ -1,6 +1,8 @@
 package main
 
 import (
+	//todo 路徑打錯ㄌ
+
 	"fmt"
 	"net/http"
 
@@ -12,8 +14,7 @@ import (
 	"eirc.app/internal/v1/router/department"
 	"eirc.app/internal/v1/router/employee"
 	"eirc.app/internal/v1/router/equipment"
-	"eirc.app/internal/v1/router/requset"
-
+	"eirc.app/internal/v1/router/request"
 	_ "github.com/golang-migrate/migrate/v4/database/postgres"
 	_ "github.com/golang-migrate/migrate/v4/source/file"
 
@@ -32,7 +33,8 @@ func main() {
 	}
 
 	route := router.Default()
-	route = requset.GetRoute(route, db)
+	//todo 這裡也是
+	route = request.GetRoute(route, db)
 	route = department.GetRoute(route, db)
 	route = equipment.GetRoute(route, db)
 	route = employee.GetRoute(route, db)

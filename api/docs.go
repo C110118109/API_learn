@@ -10,16 +10,7 @@ const docTemplate = `{
     "info": {
         "description": "{{escape .Description}}",
         "title": "{{.Title}}",
-        "termsOfService": "https://eirc.app/",
-        "contact": {
-            "name": "API System Support",
-            "url": "https://eirc.app/",
-            "email": "mingzong.lyu@gmail.com"
-        },
-        "license": {
-            "name": "AGPL 3.0",
-            "url": "https://www.gnu.org/licenses/agpl-3.0.en.html"
-        },
+        "contact": {},
         "version": "{{.Version}}"
     },
     "host": "{{.Host}}",
@@ -29,12 +20,12 @@ const docTemplate = `{
 
 // SwaggerInfo holds exported Swagger Info so clients can modify it
 var SwaggerInfo = &swag.Spec{
-	Version:          "0.1",
-	Host:             "api.eirc.app",
-	BasePath:         "/",
-	Schemes:          []string{"https"},
-	Title:            "hsmaster SYSTEM API",
-	Description:      "企業系統整合管理平台",
+	Version:          "",
+	Host:             "",
+	BasePath:         "",
+	Schemes:          []string{},
+	Title:            "",
+	Description:      "",
 	InfoInstanceName: "swagger",
 	SwaggerTemplate:  docTemplate,
 	LeftDelim:        "{{",
