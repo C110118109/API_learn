@@ -40,7 +40,7 @@ func (e *entity) GetByID(input *model.Field) (output *model.Table, err error) {
 	return output, err
 }
 
-func (e *entity) Deleted(input *model.Field) (err error) {
+func (e *entity) Deleted(input *model.Table) (err error) {
 	err = e.db.Model(&model.Table{}).Delete(&input).Error
 
 	return err

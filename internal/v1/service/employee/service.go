@@ -1,7 +1,7 @@
 package employee
 
 import (
-	entity "eirc.app/internal/v1/entity/department"
+	entity "eirc.app/internal/v1/entity/employee"
 	model "eirc.app/internal/v1/structure/employees"
 	"gorm.io/gorm"
 )

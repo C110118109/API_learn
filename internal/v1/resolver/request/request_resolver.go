@@ -26,7 +26,8 @@ func (r *resolver) Created(trx *gorm.DB, input *requestModel.Created) interface{
 		log.Error(err)
 		return code.GetCodeMessage(code.InternalServerError, err.Error())
 	}
-	_, err := r.EquipmentService.WithTrx(trx).GetByID(&equipmentModel.Field{EquipmentID: input.EquipmentID})
+	//todo err重複宣告   (Before -> := )
+	_, err = r.EquipmentService.WithTrx(trx).GetByID(&equipmentModel.Field{EquipmentID: input.EquipmentID})
 	if err != nil {
 		if errors.Is(err, gorm.ErrRecordNotFound) {
 			return code.GetCodeMessage(code.DoesNotExist, err)
@@ -35,7 +36,8 @@ func (r *resolver) Created(trx *gorm.DB, input *requestModel.Created) interface{
 		log.Error(err)
 		return code.GetCodeMessage(code.InternalServerError, err.Error())
 	}
-	_, err := r.EmployeeService.WithTrx(trx).GetByID(&employeeModel.Field{EmployeeID: input.EmployeeID})
+	//todo err重複宣告
+	_, err = r.EmployeeService.WithTrx(trx).GetByID(&employeeModel.Field{EmployeeID: input.EmployeeID})
 	if err != nil {
 		if errors.Is(err, gorm.ErrRecordNotFound) {
 			return code.GetCodeMessage(code.DoesNotExist, err)

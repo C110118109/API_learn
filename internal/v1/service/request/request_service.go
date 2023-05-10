@@ -108,6 +108,8 @@ func (s *service) Deleted(input *model.Updated) (err error) {
 
 		return err
 	}
+	//todo 少這行  (before :缺)
+	err = s.Entity.Deleted(field)
 
 	return err
 }
