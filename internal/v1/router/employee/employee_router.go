@@ -9,7 +9,7 @@ import (
 
 func GetRoute(route *gin.Engine, db *gorm.DB) *gin.Engine {
 	controller := presenter.New(db)
-	v10 := route.Group("authority").Group("v1.0").Group("employees")
+	v10 := route.Group("authority").Group("v1.0").Group("employee")
 	{
 		v10.POST("", middleware.Transaction(db), controller.Created)
 		v10.GET("", controller.List)

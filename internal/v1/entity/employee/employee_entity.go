@@ -24,11 +24,6 @@ func (e *entity) List(input *model.Fields) (amount int64, output []*model.Table,
 		db.Where("name like %?%", *input.Name)
 	}
 
-	
-
-	err = db.Count(&amount).Offset(int((input.Page - 1) * input.Limit)).
-		Limit(int(input.Limit)).Order("created_at desc").Find(&output).Error
-
 	return amount, output, err
 }
 

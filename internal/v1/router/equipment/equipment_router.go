@@ -2,13 +2,13 @@ package equipment
 
 import (
 	"eirc.app/internal/v1/middleware"
-	presenter "eirc.app/internal/v1/presenter/equipment"
+	"eirc.app/internal/v1/presenter/equipment"
 	"github.com/gin-gonic/gin"
 	"gorm.io/gorm"
 )
 
 func GetRoute(route *gin.Engine, db *gorm.DB) *gin.Engine {
-	controller := presenter.New(db)
+	controller := equipment.New(db)
 	v10 := route.Group("authority").Group("v1.0").Group("equipments")
 	{
 		v10.POST("", middleware.Transaction(db), controller.Created)
