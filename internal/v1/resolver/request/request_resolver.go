@@ -26,8 +26,7 @@ func (r *resolver) Created(trx *gorm.DB, input *requestModel.Created) interface{
 		log.Error(err)
 		return code.GetCodeMessage(code.InternalServerError, err.Error())
 	}
-	_, err := r.EquipmentService.WithTrx(trx).GetByID(&equipmentModel.Field{EquipmentID: input.EquipmentID,
-		IsDeleted: util.PointerBool(false)})
+	_, err := r.EquipmentService.WithTrx(trx).GetByID(&equipmentModel.Field{EquipmentID: input.EquipmentID})
 	if err != nil {
 		if errors.Is(err, gorm.ErrRecordNotFound) {
 			return code.GetCodeMessage(code.DoesNotExist, err)
@@ -36,8 +35,7 @@ func (r *resolver) Created(trx *gorm.DB, input *requestModel.Created) interface{
 		log.Error(err)
 		return code.GetCodeMessage(code.InternalServerError, err.Error())
 	}
-	_, err := r.EmployeeService.WithTrx(trx).GetByID(&employeeModel.Field{EmployeeID: input.EmployeeID,
-		IsDeleted: util.PointerBool(false)})
+	_, err := r.EmployeeService.WithTrx(trx).GetByID(&employeeModel.Field{EmployeeID: input.EmployeeID})
 	if err != nil {
 		if errors.Is(err, gorm.ErrRecordNotFound) {
 			return code.GetCodeMessage(code.DoesNotExist, err)
@@ -47,7 +45,7 @@ func (r *resolver) Created(trx *gorm.DB, input *requestModel.Created) interface{
 		return code.GetCodeMessage(code.InternalServerError, err.Error())
 	}
 
-	request, err := r.RequestModel.WithTrx(trx).Created(input)
+	request, err := r.RequestService.WithTrx(trx).Created(input)
 	if err != nil {
 		log.Error(err)
 		return code.GetCodeMessage(code.InternalServerError, err.Error())
@@ -70,7 +68,7 @@ func (r *resolver) List(input *requestModel.Fields) interface{} {
 	}
 
 	output.Pages = util.Pagination(quantity, output.Limit)
-	err = json.Unmarshal(requestsByte, &output.Rrquests)
+	err = json.Unmarshal(requestsByte, &output.Requests)
 	if err != nil {
 		log.Error(err)
 		return code.GetCodeMessage(code.InternalServerError, err.Error())

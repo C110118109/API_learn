@@ -15,7 +15,7 @@ import (
 func (r *resolver) Created(trx *gorm.DB, input *employeeModel.Created) interface{} {
 	defer trx.Rollback()
 	// Todo 角色名稱
-	_, err := r.EmployeeService.WithTrx(trx).GetByID(&departmentModel.Field{EmployeeID: input.EmployeeID})
+	_, err := r.DeparmentService.WithTrx(trx).GetByID(&departmentModel.Field{DepartmentID: input.DepartmentID})
 	if err != nil {
 		if errors.Is(err, gorm.ErrRecordNotFound) {
 			return code.GetCodeMessage(code.DoesNotExist, err)

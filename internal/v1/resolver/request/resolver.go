@@ -21,7 +21,7 @@ type Resolver interface {
 }
 
 type resolver struct {
-	RequestServer     request.Service
+	RequestService    request.Service
 	DepartmentService department.Service
 	EmployeeService   employee.Service
 	EquipmentService  equipment.Service
@@ -30,7 +30,7 @@ type resolver struct {
 func New(db *gorm.DB) Resolver {
 
 	return &resolver{
-		RequestServer:     request.New(db),
+		RequestService:    request.New(db),
 		DepartmentService: department.New(db),
 		EmployeeService:   employee.New(db),
 		EquipmentService:  equipment.New(db),

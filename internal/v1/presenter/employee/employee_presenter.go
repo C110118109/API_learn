@@ -1,12 +1,10 @@
 package employee
 
 import (
-	"eirc.app/internal/pkg/code"
-	"eirc.app/internal/pkg/log"
-
-	//"eirc.app/internal/pkg/util"
 	"net/http"
 
+	"eirc.app/internal/pkg/code"
+	"eirc.app/internal/pkg/log"
 	preset "eirc.app/internal/v1/presenter"
 	"eirc.app/internal/v1/structure/employees"
 	"github.com/gin-gonic/gin"
@@ -26,7 +24,7 @@ func (p *presenter) Created(ctx *gin.Context) {
 		return
 	}
 
-	codeMessage := p.EmployeeResolver.Created(trx, input)
+	codeMessage := p.Employeeesolver.Created(trx, input)
 	ctx.JSON(http.StatusOK, codeMessage)
 }
 
@@ -43,7 +41,7 @@ func (p *presenter) List(ctx *gin.Context) {
 		input.Limit = preset.DefaultLimit
 	}
 
-	codeMessage := p.EmployeeResolver.List(input)
+	codeMessage := p.Employeeesolver.List(input)
 	ctx.JSON(http.StatusOK, codeMessage)
 }
 
@@ -58,7 +56,7 @@ func (p *presenter) GetByID(ctx *gin.Context) {
 		return
 	}
 
-	codeMessage := p.EmployeeResolver.GetByID(input)
+	codeMessage := p.Employeeesolver.GetByID(input)
 	ctx.JSON(http.StatusOK, codeMessage)
 }
 
@@ -76,7 +74,7 @@ func (p *presenter) Delete(ctx *gin.Context) {
 		return
 	}
 
-	codeMessage := p.EmployeeResolver.Deleted(input)
+	codeMessage := p.Employeeesolver.Deleted(input)
 	ctx.JSON(http.StatusOK, codeMessage)
 }
 
@@ -94,6 +92,6 @@ func (p *presenter) Updated(ctx *gin.Context) {
 		return
 	}
 
-	codeMessage := p.EmployeeResolver.Updated(input)
+	codeMessage := p.Employeeesolver.Updated(input)
 	ctx.JSON(http.StatusOK, codeMessage)
 }

@@ -110,7 +110,7 @@ func (s *service) Deleted(input *model.Updated) (err error) {
 	}
 
 	//field.UpdatedBy = input.UpdatedBy
-	field.UpdatedAt = util.PointerTime(util.NowToUTC())
+	//field.UpdatedAt = util.PointerTime(util.NowToUTC())
 	//field.IsDeleted = true
 	err = s.Entity.Updated(field)
 

@@ -13,9 +13,9 @@ func GetRoute(route *gin.Engine, db *gorm.DB) *gin.Engine {
 	{
 		v10.POST("", middleware.Transaction(db), controller.Created)
 		v10.GET("", controller.List)
-		v10.GET(":equipmenttID", controller.GetByID)
-		v10.DELETE(":equipmenttID", controller.Delete)
-		v10.PATCH(":equipmenttID", controller.Updated)
+		v10.GET(":equipmentID", controller.GetByID)
+		v10.DELETE(":equipmentID", controller.Delete)
+		v10.PATCH(":equipmentID", controller.Updated)
 	}
 
 	return route

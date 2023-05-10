@@ -2,7 +2,7 @@ package employee
 
 import (
 	"eirc.app/internal/v1/service/department"
-	//"eirc.app/internal/v1/service/company"
+	"eirc.app/internal/v1/service/employee"
 	model "eirc.app/internal/v1/structure/employees"
 	"gorm.io/gorm"
 )
@@ -16,14 +16,14 @@ type Resolver interface {
 }
 
 type resolver struct {
-	DepartmentServer department.Service
-	//CompanyService company.Service
+	EmployeeService  employee.Service
+	DeparmentService department.Service
 }
 
 func New(db *gorm.DB) Resolver {
 
 	return &resolver{
-		DepartmentServer: department.New(db),
-		//CompanyService: company.New(db),
+		EmployeeService:  employee.New(db),
+		DeparmentService: department.New(db),
 	}
 }
