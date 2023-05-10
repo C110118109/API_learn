@@ -85,9 +85,9 @@ type Field struct {
 	// 設備ID
 	EquipmentID *string `json:"equipment_id,omitempty" form:"equipment_id" binding:"omitempty,uuid4"`
 	// 數量
-	Quanity int64 `json:"quanity,omitempty" form:"quanity"`
+	Quanity *int64 `json:"quanity,omitempty" form:"quanity"`
 	// 價格
-	Price int64 `json:"price,omitempty" form:"price"`
+	Price *int64 `json:"price,omitempty" form:"price"`
 }
 
 // Fields is the searched structure file (including pagination)
@@ -98,7 +98,7 @@ type Fields struct {
 
 // List is multiple return structure files
 type List struct {
-	Accounts []*struct {
+	Requests []*struct {
 		// 編號
 		RequestID string `json:"request_id,omitempty"`
 		// 員工ID

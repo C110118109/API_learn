@@ -9,8 +9,10 @@ import (
 	"eirc.app/internal/pkg/log"
 
 	"eirc.app/internal/v1/router"
-	"eirc.app/internal/v1/router/account"
-	"eirc.app/internal/v1/router/company"
+	"eirc.app/internal/v1/router/department"
+	"eirc.app/internal/v1/router/employee"
+	"eirc.app/internal/v1/router/equipment"
+	"eirc.app/internal/v1/router/requset"
 
 	_ "github.com/golang-migrate/migrate/v4/database/postgres"
 	_ "github.com/golang-migrate/migrate/v4/source/file"
@@ -45,8 +47,10 @@ func main() {
 	}
 
 	route := router.Default()
-	route = account.GetRoute(route, db)
-	route = company.GetRoute(route, db)
+	route = requset.GetRoute(route, db)
+	route = department.GetRoute(route, db)
+	route = equipment.GetRoute(route, db)
+	route = employee.GetRoute(route, db)
 
 	url := ginSwagger.URL(fmt.Sprintf("http://localhost:8080/swagger/doc.json"))
 	route.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler, url))

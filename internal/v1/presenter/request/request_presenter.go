@@ -1,24 +1,22 @@
 package request
 
 import (
+	"net/http"
+
 	"eirc.app/internal/pkg/code"
 	"eirc.app/internal/pkg/log"
-	"eirc.app/internal/pkg/util"
 	preset "eirc.app/internal/v1/presenter"
 	"eirc.app/internal/v1/structure/requests"
 	"github.com/gin-gonic/gin"
 	"gorm.io/gorm"
-	"net/http"
 )
-
-
 
 func (p *presenter) Created(ctx *gin.Context) {
 
 	trx := ctx.MustGet("db_trx").(*gorm.DB)
-	
-	input := &accounts.Created{}
-	
+
+	input := &requests.Created{}
+
 	if err := ctx.ShouldBindJSON(input); err != nil {
 		log.Error(err)
 		ctx.JSON(http.StatusOK, code.GetCodeMessage(code.FormatError, err.Error()))
@@ -63,8 +61,7 @@ func (p *presenter) GetByID(ctx *gin.Context) {
 }
 
 func (p *presenter) Delete(ctx *gin.Context) {
-	
-	
+
 	requestID := ctx.Param("requestID")
 	input := &requests.Updated{}
 	input.RequestID = requestID
@@ -81,11 +78,11 @@ func (p *presenter) Delete(ctx *gin.Context) {
 }
 
 func (p *presenter) Updated(ctx *gin.Context) {
-	
+
 	requestID := ctx.Param("rrequestID")
 	input := &requests.Updated{}
 	input.RequestID = requestID
-	
+
 	if err := ctx.ShouldBindJSON(input); err != nil {
 		log.Error(err)
 		ctx.JSON(http.StatusOK, code.GetCodeMessage(code.FormatError, err.Error()))

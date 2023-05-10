@@ -33,7 +33,6 @@ type Base struct {
 	DepartmentID string `json:"department_id,omitempty"`
 	// 創建時間
 	CreatedTime time.Time `json:"created_time"`
-	
 }
 
 // Single return structure file
@@ -58,7 +57,6 @@ type Created struct {
 	Company string `json:"company,omitempty" binding:"required" validate:"required"`
 	// 員工姓名
 	Name string `json:"name" binding:"required" validate:"required"`
-	
 }
 
 // Field is structure file for search
@@ -71,7 +69,6 @@ type Field struct {
 	Company *string `json:"company,omitempty" form:"company"`
 	// 員工姓名
 	Name *string `json:"name,omitempty" form:"name"`
-	
 }
 
 // Fields is the searched structure file (including pagination)
@@ -82,7 +79,7 @@ type Fields struct {
 
 // List is multiple return structure files
 type List struct {
-	employees []*struct {
+	Employees []*struct {
 		// 員工編號
 		EmployeeID string `json:"employee_id,omitempty"`
 		// 部門ID
@@ -91,7 +88,6 @@ type List struct {
 		Company string `json:"company,omitempty"`
 		// 員工姓名
 		Name string `json:"name,omitempty"`
-		
 	} `json:"employees"`
 	model.OutPage
 }
@@ -106,7 +102,6 @@ type Updated struct {
 	Name *string `json:"name,omitempty"`
 	// 公司名稱
 	Company *string `json:"company,omitempty"`
-	
 }
 
 // TableName sets the insert table name for this struct type

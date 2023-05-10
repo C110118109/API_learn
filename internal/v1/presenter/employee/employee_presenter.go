@@ -49,7 +49,7 @@ func (p *presenter) List(ctx *gin.Context) {
 
 func (p *presenter) GetByID(ctx *gin.Context) {
 	employeeID := ctx.Param("employeeID")
-	input := &accounts.Field{}
+	input := &employees.Field{}
 	input.EmployeeID = employeeID
 	if err := ctx.ShouldBindJSON(input); err != nil {
 		log.Error(err)

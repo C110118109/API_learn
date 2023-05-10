@@ -21,13 +21,13 @@ func (e *entity) List(input *model.Fields) (amount int64, output []*model.Table,
 	if input.EquipmentID != nil {
 		db.Where("equipment_id = ?", input.EquipmentID)
 	}
-	if input.Price != nil {
-		db.Where("price = ?", input.Price)
-	}
+	// if input.Price != nil {
+	// 	db.Where("price = ?", input.Price)
+	// }
 
-	if input.Quanity != nil {
-		db.Where("name like %?%", *input.Quanity)
-	}
+	// if input.Quanity != nil {
+	// 	db.Where("name like %?%", *input.Quanity)
+	// }
 
 	return amount, output, err
 }
