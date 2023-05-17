@@ -1,1 +1,1 @@
-DROP FUNCTIOn IF EXISTS add_request_id;
+DROP FUNCTIOn IF EXISTS add_request_code;

@@ -1,7 +1,9 @@
+CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 
 CREATE TABLE IF NOT EXISTS requests
 (
-    request_id text default add_request_id() primary key,
+    request_id  uuid default uuid_generate_v4() not null primary key,
+    request_code text default add_request_code() not null,
     employee_id uuid not null,
     department_id uuid not null,
     equipment_id uuid not null,

@@ -8,8 +8,10 @@ import (
 
 // Table struct is database table struct
 type Table struct {
-	// 編號
-	RequestID string `gorm:"primaryKey;column:request_id;add_request_id()type:TEXT;" json:"request_id,omitempty"`
+	// 編號UUID
+	RequestID string `gorm:"primaryKey;column:request_id;uuid_generate_v4()type:UUID;" json:"request_id,omitempty"`
+	// 單號
+	RequestCode string `gorm:"->;column:request_code;add_request_code()type:text;" json:"request_code,omitempty"` //->唯讀不寫 else:會是空白
 	// 員工ID
 	EmployeeID string `gorm:"column:employee_id;type:UUID;" json:"employee_id,omitempty"`
 	// 部門ID
@@ -28,6 +30,8 @@ type Table struct {
 type Base struct {
 	// 編號
 	RequestID string `json:"request_id,omitempty"`
+	// 單號
+	RequestCode string `json:"request_code,omitempty"`
 	// 員工ID
 	EmployeeID string `json:"employee_id,omitempty"`
 	// 部門ID
@@ -46,6 +50,8 @@ type Base struct {
 type Single struct {
 	// 編號
 	RequestID string `json:"request_id,omitempty"`
+	// 單號
+	RequestCode string `json:"request_code,omitempty"`
 	// 員工ID
 	EmployeeID string `json:"employee_id,omitempty"`
 	// 部門ID
@@ -78,6 +84,8 @@ type Created struct {
 type Field struct {
 	// 編號
 	RequestID string `json:"request_id,omitempty" binding:"omitempty" swaggerignore:"true"`
+	// 單號
+	RequestCode string `json:"request_code,omitempty" form:"request_code"`
 	// 員工ID
 	EmployeeID *string `json:"employee_id,omitempty" form:"employee_id" binding:"omitempty,uuid4"`
 	// 部門ID
@@ -101,6 +109,8 @@ type List struct {
 	Requests []*struct {
 		// 編號
 		RequestID string `json:"request_id,omitempty"`
+		// 單號
+		RequestCode string `json:"request_code,omitempty"`
 		// 員工ID
 		EmployeeID string `json:"employee_id,omitempty"`
 		// 部門ID
@@ -119,6 +129,8 @@ type List struct {
 type Updated struct {
 	// 編號
 	RequestID string `json:"request_id,omitempty" binding:"omitempty" swaggerignore:"true"`
+	// 單號
+	RequestCode *string `json:"request_code,omitempty"`
 	// 員工ID
 	EmployeeID *string `json:"employee_id,omitempty" binding:"omitempty,uuid4"`
 	// 部門ID
