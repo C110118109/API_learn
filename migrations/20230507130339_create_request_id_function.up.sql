@@ -1,4 +1,5 @@
 create function add_request_code()
+create function add_request_code()
 returns text as
 $$
 declare

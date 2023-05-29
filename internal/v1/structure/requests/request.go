@@ -32,6 +32,8 @@ type Base struct {
 	RequestID string `json:"request_id,omitempty"`
 	// 單號
 	RequestCode string `json:"request_code,omitempty"`
+	// 單號
+	RequestCode string `json:"request_code,omitempty"`
 	// 員工ID
 	EmployeeID string `json:"employee_id,omitempty"`
 	// 部門ID
@@ -50,6 +52,8 @@ type Base struct {
 type Single struct {
 	// 編號
 	RequestID string `json:"request_id,omitempty"`
+	// 單號
+	RequestCode string `json:"request_code,omitempty"`
 	// 單號
 	RequestCode string `json:"request_code,omitempty"`
 	// 員工ID
@@ -86,6 +90,8 @@ type Field struct {
 	RequestID string `json:"request_id,omitempty" binding:"omitempty" swaggerignore:"true"`
 	// 單號
 	RequestCode string `json:"request_code,omitempty" form:"request_code"`
+	// 單號
+	RequestCode string `json:"request_code,omitempty" form:"request_code"`
 	// 員工ID
 	EmployeeID *string `json:"employee_id,omitempty" form:"employee_id" binding:"omitempty,uuid4"`
 	// 部門ID
@@ -111,6 +117,8 @@ type List struct {
 		RequestID string `json:"request_id,omitempty"`
 		// 單號
 		RequestCode string `json:"request_code,omitempty"`
+		// 單號
+		RequestCode string `json:"request_code,omitempty"`
 		// 員工ID
 		EmployeeID string `json:"employee_id,omitempty"`
 		// 部門ID
@@ -129,6 +137,8 @@ type List struct {
 type Updated struct {
 	// 編號
 	RequestID string `json:"request_id,omitempty" binding:"omitempty" swaggerignore:"true"`
+	// 單號
+	RequestCode *string `json:"request_code,omitempty"`
 	// 單號
 	RequestCode *string `json:"request_code,omitempty"`
 	// 員工ID
